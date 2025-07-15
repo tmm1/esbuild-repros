@@ -1,0 +1,20 @@
+{
+  "name": "sourcemap-issues",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile-esbuild": "esbuild --target=es2022 --format=esm --sourcemap=external --outdir=out-esbuild src/*.ts",
+    "compile-tsc": "tsc src/*.ts --outdir out-tsc --sourceMap true --target es2022 --module es2022 --moduleResolution node",
+    "compare": "node --experimental-strip-types compare.ts"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "esbuild": "^0.25.6",
+    "source-map": "0.6.1",
+    "typescript": "^5.8.3"
+  }
+}
