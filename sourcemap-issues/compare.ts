@@ -6,13 +6,13 @@ function mappedPositionFrom(source: string, lc: ts.LineAndCharacter): sm.MappedP
     return { source, line: lc.line + 1, column: lc.character };
 }
 
-function lcFrom(position: sm.Position): ts.LineAndCharacter {
-    return { line: position.line - 1, character: position.column };
+function lcFrom(position: sm.NullablePosition): ts.LineAndCharacter {
+    return { line: position.line! - 1, character: position.column! };
 }
 
-function calc(mapfile: string, srcfile: string, c: any) {
+async function calc(mapfile: string, srcfile: string, c: any) {
     const sourcemap = fs.readFileSync(mapfile, 'utf8');
-    const smc = new sm.SourceMapConsumer(sourcemap);
+    const smc = await new sm.SourceMapConsumer(sourcemap);
     //smc.eachMapping((m) => { console.log(m) })
     const positionFrom = mappedPositionFrom.bind(null, srcfile);
 
