@@ -5,6 +5,8 @@
   "scripts": {
     "compile-esbuild": "esbuild --target=es2022 --format=esm --sourcemap=external --outdir=out-esbuild src/*.ts",
     "compile-tsc": "tsc src/*.ts --outdir out-tsc --sourceMap true --target es2022 --module es2022 --moduleResolution node",
+    "compile-esbuild-inline": "esbuild --target=es2022 --format=esm --sourcemap=inline --sources-content=true --outdir=out-esbuild src/*.ts",
+    "compile-tsc-inline": "tsc src/*.ts --outdir out-tsc --inlineSourceMap --target es2022 --module es2022 --inlineSources --moduleResolution node",
     "compare": "node --experimental-strip-types compare.ts"
   },
   "type": "module",
